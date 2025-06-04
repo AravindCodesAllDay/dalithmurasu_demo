@@ -22,12 +22,16 @@ connectDB()
     // Import routes
     const recentPostsRoutes = require("./routes/recentPosts");
     const premiumArticlesRoutes = require("./routes/premiumArticleRoutes");
-    const interviewRoutes = require("./routes/interviewRoutes"); // <-- added
+    const interviewRoutes = require("./routes/interviewRoutes");
 
     // Mount routes
     app.use("/api/recent-posts", recentPostsRoutes);
     app.use("/api/premium-articles", premiumArticlesRoutes);
-    app.use("/api/interviews", interviewRoutes); // <-- added
+    app.use("/api/interviews", interviewRoutes);
+
+    app.get("/", (req, res) => {
+      res.send("✅ API is running...");
+    });
 
     // Start server
     const PORT = process.env.PORT || 3030;
@@ -37,7 +41,5 @@ connectDB()
   })
   .catch((error) => {
     console.error("Failed to connect to MongoDB", error);
-    process.exit(1); 
+    process.exit(1);
   });
-
-  
