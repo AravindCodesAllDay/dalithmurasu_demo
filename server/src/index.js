@@ -14,7 +14,8 @@ connectDB()
 
     // Middleware
     app.use(cors());
-    app.use(express.json()); // Parse JSON request bodies
+    app.use(express.json({ extended: true }));
+    app.use(express.urlencoded({ extended: true }));
 
     // Serve uploaded files statically
     app.use("/uploads", express.static(path.join(__dirname, "./uploads")));
