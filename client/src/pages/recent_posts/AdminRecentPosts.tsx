@@ -14,11 +14,11 @@ export default function AdminRecentPosts() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [author, setAuthor] = useState("");         // NEW
-  const [category, setCategory] = useState("");     // NEW
+  const [author, setAuthor] = useState(""); // NEW
+  const [category, setCategory] = useState(""); // NEW
   const [imageFile, setImageFile] = useState<File | null>(null);
 
-  const SERVER_URL = "http://localhost:3030";
+  const SERVER_URL = `${import.meta.env.VITE_API}`;
 
   useEffect(() => {
     fetchPosts();
@@ -36,8 +36,8 @@ export default function AdminRecentPosts() {
     const formData = new FormData();
     formData.append("title", title);
     formData.append("content", content);
-    formData.append("author", author);           // NEW
-    formData.append("category", category);       // NEW
+    formData.append("author", author); // NEW
+    formData.append("category", category); // NEW
     if (imageFile) {
       formData.append("image", imageFile);
     }
@@ -50,8 +50,8 @@ export default function AdminRecentPosts() {
     if (res.ok) {
       setTitle("");
       setContent("");
-      setAuthor("");       // Clear
-      setCategory("");     // Clear
+      setAuthor(""); // Clear
+      setCategory(""); // Clear
       setImageFile(null);
       fetchPosts();
     }
@@ -78,7 +78,9 @@ export default function AdminRecentPosts() {
         className="bg-white p-6 rounded-lg shadow-md space-y-4 mb-10 max-w-xl mx-auto"
       >
         <div>
-          <label className="block text-sm font-medium text-gray-700">Title</label>
+          <label className="block text-sm font-medium text-gray-700">
+            Title
+          </label>
           <input
             type="text"
             value={title}
@@ -89,7 +91,9 @@ export default function AdminRecentPosts() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">Content</label>
+          <label className="block text-sm font-medium text-gray-700">
+            Content
+          </label>
           <textarea
             value={content}
             onChange={(e) => setContent(e.target.value)}
@@ -100,7 +104,9 @@ export default function AdminRecentPosts() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">Author</label>
+          <label className="block text-sm font-medium text-gray-700">
+            Author
+          </label>
           <input
             type="text"
             value={author}
@@ -111,7 +117,9 @@ export default function AdminRecentPosts() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">Category</label>
+          <label className="block text-sm font-medium text-gray-700">
+            Category
+          </label>
           <input
             type="text"
             value={category}
@@ -122,7 +130,9 @@ export default function AdminRecentPosts() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">Upload Image</label>
+          <label className="block text-sm font-medium text-gray-700">
+            Upload Image
+          </label>
           <input
             type="file"
             accept="image/*"
@@ -158,9 +168,15 @@ export default function AdminRecentPosts() {
                 alt={post.title}
                 className="rounded-md h-48 object-cover mb-3"
               />
-              <h3 className="text-lg font-semibold text-gray-800">{post.title}</h3>
-              <p className="text-gray-500 text-sm">By {post.author} in {post.category}</p>
-              <p className="text-gray-600 mt-2 text-sm line-clamp-3">{post.content}</p>
+              <h3 className="text-lg font-semibold text-gray-800">
+                {post.title}
+              </h3>
+              <p className="text-gray-500 text-sm">
+                By {post.author} in {post.category}
+              </p>
+              <p className="text-gray-600 mt-2 text-sm line-clamp-3">
+                {post.content}
+              </p>
               <button
                 onClick={() => handleDelete(post._id)}
                 className="mt-4 bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded-md text-sm self-start"

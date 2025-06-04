@@ -12,7 +12,6 @@ interface CardProps {
 
 export default function Card({
   image,
-  alt = "Article image",
   date,
   title,
   author,
@@ -22,8 +21,8 @@ export default function Card({
   return (
     <Link
       to={url}
-      className="col-span-3 border rounded-lg overflow-hidden shadow-md bg-white hover:scale-102 transition-all duration-150 ease-in-out"   
-      >
+      className="col-span-3 border rounded-lg overflow-hidden shadow-md bg-white hover:scale-102 transition-all duration-150 ease-in-out"
+    >
       <img src={image} alt={title} className="w-full h-48 object-cover" />
       <div className="p-4 space-y-2">
         <div className="flex justify-between items-center">

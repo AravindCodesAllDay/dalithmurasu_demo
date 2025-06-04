@@ -2,7 +2,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const API_URL = "http://localhost:3030/api/premium-articles";
+const API_URL = `${import.meta.env.VITE_API}api/premium-articles`;
 
 export default function PremiumArticles() {
   const [articles, setArticles] = useState([]);
@@ -16,10 +16,12 @@ export default function PremiumArticles() {
       {articles.map((article: any) => (
         <div key={article._id} className="border p-4 rounded shadow">
           <h3 className="text-lg font-bold">{article.title}</h3>
-          <p className="text-sm text-gray-600">{article.content?.slice(0, 100)}...</p>
+          <p className="text-sm text-gray-600">
+            {article.content?.slice(0, 100)}...
+          </p>
           {article.mainImage && (
             <img
-              src={`http://localhost:3030/uploads/${article.mainImage}`}
+              src={`${import.meta.env.VITE_API}uploads/${article.mainImage}`}
               alt=""
               className="w-32 mt-2"
             />

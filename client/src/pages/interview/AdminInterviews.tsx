@@ -15,7 +15,7 @@ export default function AdminInterviews() {
   const [interviews, setInterviews] = useState<Interview[]>([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3030/api/interviews").then((res) => {
+    axios.get(`${import.meta.env.VITE_API}api/interviews`).then((res) => {
       setInterviews(res.data);
     });
   }, []);

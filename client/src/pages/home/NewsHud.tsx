@@ -23,12 +23,26 @@ export default function NewsHud() {
           <div className="grid grid-cols-1 md:grid-cols-2 w-full mx-auto gap-3">
             {periyar_speaks.map((article, index) => (
               <Link key={index} to={`/periyar_speaks/${article.id}`}>
-                <Card {...article} />
+                <Card
+                  image={article.photo}
+                  title={article.title}
+                  date={article.date}
+                  author={article.from}
+                  category={article.category}
+                  url={`/some-url/${article.id}`}
+                />
               </Link>
             ))}
             {babasaheb_speaks.map((article, index) => (
               <Link key={index} to={`/babasaheb_speaks/${article.id}`}>
-                <Card {...article} />
+                <Card
+                  image={article.photo}
+                  title={article.title}
+                  date={article.date}
+                  author={article.from}
+                  category={article.category}
+                  url={`/some-url/${article.id}`}
+                />
               </Link>
             ))}
           </div>

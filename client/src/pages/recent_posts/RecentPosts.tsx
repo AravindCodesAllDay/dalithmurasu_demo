@@ -11,7 +11,7 @@ type RecentPostType = {
   category: string;
 };
 
-const SERVER_URL = "http://localhost:3030";
+const SERVER_URL = `${import.meta.env.VITE_API}`;
 
 export default function RecentPosts() {
   const [posts, setPosts] = useState<RecentPostType[]>([]);

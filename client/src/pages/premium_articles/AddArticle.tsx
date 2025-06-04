@@ -27,7 +27,10 @@ const AddArticle = () => {
       if (image2) formData.append("image2", image2);
       if (image3) formData.append("image3", image3);
 
-      await axios.post("http://localhost:3030/api/premium-articles", formData);
+      await axios.post(
+        `${import.meta.env.VITE_API}api/premium-articles`,
+        formData
+      );
 
       navigate("/admin/premium-articles");
     } catch (err: any) {

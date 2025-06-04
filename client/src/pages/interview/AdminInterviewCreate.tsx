@@ -19,7 +19,7 @@ export default function AdminInterviewCreate() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:3030/api/interviews", {
+      await axios.post(`${import.meta.env.VITE_API}api/interviews`, {
         ...form,
         parts: [], // default empty parts
       });
