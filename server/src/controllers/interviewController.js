@@ -1,4 +1,4 @@
-const Interview = require("../models/Interview"); // Use correct casing to avoid import issues
+const Interview = require("../models/interview"); // Use correct casing to avoid import issues
 
 // @desc    Get all interviews
 // @route   GET /api/interviews
@@ -16,7 +16,8 @@ exports.getAllInterviews = async (req, res) => {
 exports.getInterviewById = async (req, res) => {
   try {
     const interview = await Interview.findById(req.params.id);
-    if (!interview) return res.status(404).json({ message: "Interview not found" });
+    if (!interview)
+      return res.status(404).json({ message: "Interview not found" });
     res.json(interview);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -28,9 +29,12 @@ exports.getInterviewById = async (req, res) => {
 exports.getInterviewPartById = async (req, res) => {
   try {
     const interview = await Interview.findById(req.params.id);
-    if (!interview) return res.status(404).json({ message: "Interview not found" });
+    if (!interview)
+      return res.status(404).json({ message: "Interview not found" });
 
-    const part = interview.parts.find((p) => p._id.toString() === req.params.partId);
+    const part = interview.parts.find(
+      (p) => p._id.toString() === req.params.partId
+    );
     if (!part) return res.status(404).json({ message: "Part not found" });
 
     res.json(part);
@@ -61,7 +65,8 @@ exports.updateInterview = async (req, res) => {
       { new: true, runValidators: true }
     );
 
-    if (!updatedInterview) return res.status(404).json({ message: "Interview not found" });
+    if (!updatedInterview)
+      return res.status(404).json({ message: "Interview not found" });
 
     res.json(updatedInterview);
   } catch (err) {
@@ -75,7 +80,8 @@ exports.deleteInterview = async (req, res) => {
   try {
     const deletedInterview = await Interview.findByIdAndDelete(req.params.id);
 
-    if (!deletedInterview) return res.status(404).json({ message: "Interview not found" });
+    if (!deletedInterview)
+      return res.status(404).json({ message: "Interview not found" });
 
     res.json({ message: "Interview deleted successfully" });
   } catch (err) {
