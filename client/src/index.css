@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: oklch(0 0 0);
+  --color-secondary: oklch(1 0 0);
+  --color-background-1: oklch(0.24 0 0);
+  --color-background-2: oklch(0.96 0.0042 236.5);
+  --color-highlight-1: oklch(0.54 0.206 28.53);
+  --color-highlight-2: oklch(0.64 0.1731 257.16);
+
+  --animation-slide-left: slide-left 10s linear infinite;
+}
+
+@keyframes slide-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-200%);
+  }
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+.login-container {
+  max-width: 400px;
+  margin: 4rem auto;
+  padding: 2rem;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-container h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.login-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.login-container input,
+.login-container button {
+  padding: 0.75rem;
+  font-size: 1rem;
+}
