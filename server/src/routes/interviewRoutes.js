@@ -6,7 +6,7 @@ const {
   createInterview,
   updateInterview,
   deleteInterview,
-} = require("../controllers/InterviewController"); 
+} = require("../controllers/interviewController");
 const router = express.Router();
 
 // Create a new interview
@@ -31,6 +31,6 @@ router.put("/:id", updateInterview);
 
 // Delete a specific interview by ID
 // DELETE /api/interviews/:id
-router.delete("/:id", deleteInterview)
+router.delete("/:id", deleteInterview);
 
 module.exports = router;
